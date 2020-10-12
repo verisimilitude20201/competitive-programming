@@ -1,6 +1,9 @@
 """
 This is similar to two-sums.py. The only difference is we are incrementing loop counter by 1.
 Since either index1 or index2 should not be zero.
+
+Time complexity O(N), Space complexity: O(1)
+
 """
 
 class Solution:

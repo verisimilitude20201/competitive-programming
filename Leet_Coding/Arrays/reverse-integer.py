@@ -1,6 +1,6 @@
 """
-Concept:
----------
+Solution 1 (Using an auxillary string):
+----------
 Consider any 3-digit number i.e. 321.
 
 1. 321 % 10 is 1
@@ -19,9 +19,33 @@ Space: O(1)
 Time: log   (N)
           10
 
+
+Solution 2 (Plain Mathematical)
+------------------------------
+Consider any 3-digit number i.e. 321.
+
+0. int rev = 0
+1. digit = 321 % 10 = 1
+	rev = 10 * rev + digit = 0 + 1 = 1
+	number = 321 / 10 = 32.1 ~ 32
+
+2. digit = 32 % 10 = 2
+	rev = 10 * rev + digit = 10 * 1 + 2 = 12
+	number = 32 / 10 = 3.2 = 3
+
+3. digit = 3 % 10 ~ 3
+	rev = 10 * rev + digit = 10 * 12 + 3 = 123
+	number = 3 / 10 = 0.3 ~ 0
+
+Complexity
+-----------
+Space: O(1)
+Time: log   (N)
+          10
+
 """
 class Solution:
-    def reverse(self, x: int) -> int:
+    def reverse1(self, x: int) -> int:
         reversed_number_string = ""
         largest_integer_32_bit = pow(2, 31)
         is_negative = False
@@ -39,3 +63,17 @@ class Solution:
         if is_negative:
             return reversed_number * -1
         return reversed_number
+    
+    def reverse2(number: int) -> int:
+        sign_multiplier = -1 if number < 0 else 1
+        reversed_number = 0
+        largest_32_bit_number = pow(2, 31)
+        number = abs(number)
+        while number != 0:
+            digit = number % 10
+            reversed_number = reversed_number * 10 + digit
+            if reversed_number > largest_32_bit_number:
+                return 0
+            number = int(number / 10)
+
+        return reversed_number * sign_multiplier

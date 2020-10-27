@@ -19,6 +19,8 @@ less than N operations, in this case just 1. Worst case complexity remains O(N)
 
 Note that since we're modifying array in-place, the space complexity is constant time. We are not allocating any auxillary memory.
 
+[0,1,3,0,0]
+
 """
 class SolutionZeroesRight:
     def moveZeroes1(self, nums: List[int]) -> None:
@@ -36,11 +38,11 @@ class SolutionZeroesRight:
             last_non_zero_found_at += 1
     
     def moveZeroes2(nums) :
-    last_non_zero_found_at = 0
-    for loop_counter in range(0, len(nums)):
-        if nums[loop_counter] != 0:
-            nums[last_non_zero_found_at], nums[loop_counter] = nums[loop_counter], nums[last_non_zero_found_at]
-            last_non_zero_found_at += 1
+        last_non_zero_found_at = 0
+        for loop_counter in range(0, len(nums)):
+            if nums[loop_counter] != 0:
+                nums[last_non_zero_found_at], nums[loop_counter] = nums[loop_counter], nums[last_non_zero_found_at]
+                last_non_zero_found_at += 1
 
   
 

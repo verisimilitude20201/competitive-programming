@@ -3,7 +3,14 @@ Approach
 -------
 1. Keep pushing all left parentheses, brackets and braces on Stack
 2. If any right parenthesis, brace or bracket is encountered, pop off the last element of the Stack.
-3. 
+3. Check if it matches. If not return False.
+4. Return if the stack is empty. If yes, the parenthesis are balanced.
+
+Complexity
+---------
+
+Space: O(N) - We allocate N characters on Stack at max.
+Time: O(N) - We loop through N characters in string.
 
 """
 class Stack:

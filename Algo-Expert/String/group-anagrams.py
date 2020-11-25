@@ -14,6 +14,11 @@ Approach
 3.2 If no, create new list with the sole word in it 
 4. Return a list of values in the hash table.
 
+Complexity
+----------
+Time: O(wN) - w is the number of words and N is the number of characters in a word.
+Space O(W * N log N) - Each word requires N log N space to sort...
+
 """
 
 def groupAnagrams(words):

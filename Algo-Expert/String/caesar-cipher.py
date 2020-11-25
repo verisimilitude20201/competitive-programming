@@ -64,3 +64,39 @@ def get_new_letters2(letter, key):
 		return alphabets[shifted_key]
 	else:
 		return alphabets[shifted_key % len(alphabets)]
+
+
+class CaesarCipher:
+    def __init__(self, shift):
+        self.encoder = [None] * 26
+        self.decoder = [None] * 26
+        self.shift = shift
+        for i in range(0, 26):
+            self.encoder[i] = chr((i + self.shift) % 26 + ord('A'))
+            self.decoder[i] = chr((i - self.shift) % 26 + ord('A'))
+
+    def encrypt(self, plain_text):
+        cipher_text = self._transform(plain_text, self.encoder)
+
+        return cipher_text
+
+    def decrypt(self, cipher_text):
+        plain_text = self._transform(cipher_text, self.decoder)
+
+        return plain_text
+
+    def _transform(self, text, transformer):
+        character_array = list(text)
+        for j in range(len(character_array)):
+            character = character_array[j]
+            if character.isupper():
+                character_array[j] = transformer[ord(character) - ord('A')]
+
+        return "".join(character_array)
+
+
+
+caeser_cipher = CaesarCipher(3)
+encrypted = caeser_cipher.encrypt("I MISS MY DAD")
+decrypted = caeser_cipher.decrypt(encrypted)
+print(decrypted)

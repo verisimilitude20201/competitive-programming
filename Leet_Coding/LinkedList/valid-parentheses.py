@@ -76,3 +76,55 @@ class Solution:
         if not self.stack.is_empty() and bracket_to_be_matched == self.stack.pop():
             return True
         return False
+
+
+"""
+One more solution
+"""
+
+class Stack:
+    def __init__(self):
+        self._data = []
+
+    def push(self, element):
+        self._data.append(element)
+
+    def pop(self):
+        if self.is_empty():
+            return None
+        return self._data.pop()
+
+    def is_empty(self):
+        return len(self._data) == 0
+
+
+class MatchingParenthesis:
+    left_brackets = "[{("
+    right_brackets = "]})"
+
+    def __init__(self, brackets):
+        self._brackets = brackets
+
+    def is_opening_bracket(self, c):
+        return c in self.left_brackets
+
+    def do_bracket_pairs_match(self):
+        stack = Stack()
+        for c in self._brackets:
+            if self.is_opening_bracket(c):
+                stack.push(c)
+            else:
+                if stack.is_empty():
+                    return False
+                if self.left_brackets.index(stack.pop()) != self.right_brackets.index(c):
+                    return False
+
+        return stack.is_empty()
+
+
+if __name__ == '__main__':
+    matching_parenthesis = MatchingParenthesis("{[()]}")
+    print(matching_parenthesis.do_bracket_pairs_match())
+
+    matching_parenthesis = MatchingParenthesis("{[())))))){}]}")
+    print(matching_parenthesis.do_bracket_pairs_match())

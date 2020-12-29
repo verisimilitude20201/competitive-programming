@@ -4,7 +4,7 @@ Problem:
 Given an array as input, return an array with the averages of all K consecutive elements. 
 
 
-Approach:
+Approach (Sliding Window Optimized - Constant Window Size):
 --------
 1.  1 	3 	2 	6 	-1 	4 	1 	8 	2, K = 5     
 
@@ -94,6 +94,17 @@ Result = [2.2, 2.8, 2.4, 3.6, 2.8]
 
 Complexity
 ----------
+A. Brute Force
+
+Space: O(K)
+Time: O(N * K) where K is the size of the sub-array. 
+
+Disadvantages
+-------------
+Repeated Calculations at each step along with near quadratic time-complexity
+
+B. Sliding Window Optimized
+
 Space: O(K)
 Time: O(N) where K is the size of the sub-array. 
 
@@ -102,18 +113,40 @@ Advantages
 Linear complexity with repeated calculations avoided.
 
 """
-def average_of_k_consecutive_elements(array, K):
-    averages = []
+
+# Brute Force
+def find_averages_of_subarrays_brute_force(K, arr):
+    averages = [None] * len(arr)
+    for i in range(len(arr)):
+        total_sum = 0
+        for j in range(i, i + K):
+            if i + K > len(arr):
+                break
+            total_sum += arr[j]
+        averages[i] = total_sum / K
+
+    return averages
+
+
+def find_averages_of_subarrays(K, array):
+    total_sum = 0
     window_start = 0
-    a_sum = 0.0
+    averages = []
+
     for window_end in range(len(array)):
-        a_sum += array[window_end]
+        total_sum += array[window_end]
         if window_end >= K - 1:
-            averages.append(a_sum / K)
-            a_sum -= array[window_start]
+            averages.append(total_sum / K)
+            total_sum -= array[window_start]
             window_start += 1
 
     return averages
 
 
-print(average_of_k_consecutive_elements([1, 3, 2, 6, -1, 4, 1, 8, 2], 5))
+
+# Brute Force
+result = find_averages_of_subarrays_brute_force(5, [1, 3, 2, 6, -1, 4, 1, 8, 2])
+print("Averages of subarrays of size K: " + str(result))
+
+# Optimized 
+print(find_averages_of_subarrays([1, 3, 2, 6, -1, 4, 1, 8, 2], 5))

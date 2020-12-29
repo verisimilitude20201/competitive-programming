@@ -5,6 +5,8 @@ Given a string, find the length of the longest substring in it with no more than
 
 Approach
 --------
+Sliding Window - Variable Window Size
+
 [2, 1, 5, 2, 3, 2], Required Sum = 7
 
 
@@ -92,18 +94,22 @@ Space: O(1)
 
 """
 
-def smallest_subarray_with_given_sum(array, expected_sum):
-    min_length = math.inf
-    window_start = window_end = 0
-    current_sum = 0
+import math
+
+def smallest_subarray_with_given_sum(expected_sum, array):
+    smallest_subarray_length = math.inf
+    window_start = 0
+    total_sum = 0
     for window_end in range(len(array)):
-        current_sum += array[window_end]
-        if current_sum >= expected_sum:
-            min_length = min(min_length, window_end - window_start + 1)
-            current_sum -= array[window_start]
+        total_sum += array[window_end]
+        if total_sum >= expected_sum:
+            smallest_subarray_length = min(smallest_subarray_length, window_end - window_start + 1)
+            total_sum -= array[window_start]
             window_start += 1
 
-    return min_length
+    return smallest_subarray_length
 
 
-print(smallest_subarray_with_given_sum([2, 1, 5, 1, 3, 2], 3))
+print("Smallest subarray length: " + str(smallest_subarray_with_given_sum(7, [2, 1, 5, 2, 3, 2])))
+print("Smallest subarray length: " + str(smallest_subarray_with_given_sum(7, [2, 1, 5, 2, 8])))
+print("Smallest subarray length: " + str(smallest_subarray_with_given_sum(8, [3, 4, 1, 1, 6])))

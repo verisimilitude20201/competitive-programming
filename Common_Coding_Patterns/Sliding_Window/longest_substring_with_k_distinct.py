@@ -18,8 +18,6 @@ Complexity
 ---------
     Time: O(N) N is the number of chars in string
     Space: O(K) K is the number of distinct chars in string.
-
-
 """
 
 def longest_substring_with_k_distinct(str1, K):

@@ -34,7 +34,7 @@ find_permutation_of_pattern_exists_in_string1 -->
  
 Complexity
 ---------
-    Time: O(N) N is the length of the array
+    Time: O(N) N is the length of the input string
     Space: O(K) Distinct number of characters in the pattern
 """
 

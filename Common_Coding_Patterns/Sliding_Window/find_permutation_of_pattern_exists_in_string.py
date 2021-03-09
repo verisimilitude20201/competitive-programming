@@ -37,8 +37,8 @@ find_permutation_of_pattern_exists_in_string2 -->
  
 Complexity
 ---------
-    Time: O(N) N is the length of the input string
-    Space: O(K) Distinct number of characters in the pattern
+    Time: O(N + M) N is the length of the input string and M is length of the pattern
+    Space: O(26) ~ O(1) Distinct number of characters in the alphabet
 
 Common Mistakes
 ---------------

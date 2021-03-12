@@ -26,6 +26,7 @@ Complexity
 ---------
     Time: O(N) 
     Space: O(1)
+"""
 
 def remove_duplicates_and_return_length_of_array1(arr):
     unique_element_counter = 0

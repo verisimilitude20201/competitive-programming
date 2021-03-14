@@ -20,7 +20,7 @@ Complexity
 ---------
     Time: O(N) 
     Space: O(1)
-
+"""
 def get_sorted_squares_of_a_sorted_array(arr):
     if len(arr) == 0:
         return []

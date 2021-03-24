@@ -12,6 +12,24 @@ Explanation: The output list contains the common intervals between the two lists
 Approach:
 --------
 
+Following 4 cases
+
+a.     A1   A2
+         B1   B2    ===> A1 >= B1 and B1 <= A2
+
+
+b.     A1      A2
+         B1 B2    ===> A1 >= B1 and B1 <= A2
+
+
+c.      A1  A2      
+                  =====> B1 >= A1 and A1 <= B2
+     B1   B2
+
+d.   A1A2      =====> B1 >= A1 and A1 <= B2          
+    B1   B2 
+
+
 0) intervals_a = [[1, 3], [5, 6], [7, 9]], intervals_b = [[2, 3], [5, 7]], i = 0, j = 0, merged = []
 
 1) Compare (1, 3) with (2, 3) ==> A overlaps with B, i = 0, j = 0, merged = [[2, 3]]

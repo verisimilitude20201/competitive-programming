@@ -14,7 +14,7 @@ Approach
 -------
 Sliding Window containing longest substring having same letters
 
-Sliding window will change if 
+For the above example, Sliding window will change if 
 
 0 1 2 3 4 5 6
 a a b c c b b

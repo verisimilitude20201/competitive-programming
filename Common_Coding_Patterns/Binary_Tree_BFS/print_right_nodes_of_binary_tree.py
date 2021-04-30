@@ -10,7 +10,7 @@ Example:
 			
 			2         3
 
-	   4       5  6       7 
+	   4       5   6       7 
 
        Right Nodes = [1, 3, 7]
 

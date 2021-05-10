@@ -12,7 +12,30 @@ Approach
 --------
 Instead of appending current number to all subsets, add it only to those subsets that have been previously added in the previous step. For example
 
+0)  Given set -> [1,3, 3]
 
+
+Output = [[], [1], [3], [1, 3], [1, 3, 3]]
+
+
+1) [[]], start_index = 0, end_index = 0  
+    
+  Add 1
+
+  [[], [1]]
+
+
+2) Add 3 start_index = 0, end_index = 1 
+
+   [[], [1], [3], [1, 3]]
+
+
+3) Add 3. Now nums[i] == nums[i - 1]
+       
+        start_index = 1, end_index = 3
+
+
+    [[], [1], [3], [1, 3], [1, 3], [3, 3], [1, 3, 3]]
 
 Complexity:
 ----------

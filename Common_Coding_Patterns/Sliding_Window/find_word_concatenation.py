@@ -22,6 +22,56 @@ Assumption
 ---------
 1. Here we assume all words are of same length
 
+0) Input String = "catfoxcat", words = ["cat", "fox"]
+   Output = [0, 3]
+
+
+
+1) word_freq = {"cat": 1, "fox": 1}, word_length = 3, word_count = 2, indices = []
+
+2) i = 0, i < 4
+
+     word_seen = {}
+
+   j = 0, j < 2
+  
+  i) i = 0, j = 0, 
+  	next_word_index = i  + j * word_length =  0 + 3 * 0 = 3
+  	word = string[0:3] = cat
+  	word_seen{"cat" : 1}
+
+  ii) i = 0, j = 1
+     next_word_index = i  + j * word_length =  0 + 3 * 1 = 3
+     word = string[3:6] = fox
+     word_seen{"cat" : 1, "fox": 1}
+     j + 1 == word_count so append i
+
+     indices = [0]
+
+  iii) word_seen = {}, i = 1, j = 0  
+  	   next_word_index = 1 + 0 * 3 = 1
+  	   word = string[1:4] = atf
+
+  iv) word_seen = {}, i = 2, j = 0
+       next_word_index = 2 + 0 * 3 = 2
+       word = string[2:5] = "tfo"
+
+  v) word_seen = {}, i = 3, j = 0
+     next_word_index = 3 + 0 * 3 = 3
+     word = string[3:6] = "cat"
+
+  vi) word_seen = {}, i = 3, j = 1
+      next_word_index = 6
+      word = string[6:9] = "cat"
+      j + 1 == word_count so append i
+      indices = [0, 3]
+
+  vii. word_seen = {}, i = 4 brea
+
+
+3) indices = [0, 3]
+
+
 Complexity
 ---------
     Time: O(N * M * L) Where M = length of the string, N = number of words, L = Length of each word

@@ -23,12 +23,13 @@ def get_max_profit_knapsack(weight, value, capacity, index_of_item):
     if index_of_item < 0 or capacity == 0:
         return 0
 
+    profit_of_excluded_item = get_max_profit_knapsack(weight, value, capacity, index_of_item - 1)
+    profit_of_included_item = 0
     if weight[index_of_item] <= capacity:
         profit_of_included_item = value[index_of_item] + get_max_profit_knapsack(weight, value, capacity - weight[index_of_item], index_of_item - 1)
         profit_of_excluded_item = get_max_profit_knapsack(weight, value, capacity, index_of_item - 1)
-        return max(profit_of_included_item, profit_of_excluded_item)
-    else:
-        return get_max_profit_knapsack(weight, value, capacity, index_of_item - 1)
-
+    
+    return max(profit_of_included_item, profit_of_excluded_item)
+    
 
 print(get_max_profit_knapsack([1, 3, 4, 5], [1, 4, 5, 7], 7, 3))

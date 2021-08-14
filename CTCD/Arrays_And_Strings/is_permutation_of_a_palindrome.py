@@ -10,6 +10,11 @@ is_permutation_of_a_palindrome2
 -------------------------------
 Time: O(N)
 Space: O(1) Because we are maintaining the array of characters as a 26-bit number.
+
+is_permutation_of_a_palindrome3
+-------------------------------
+Time: O(N)
+Space: O(1) Because we are maintaining the array of characters as a 26-bit bit-vector
 """
 def is_permutation_of_a_palindrome1(string):
     string = string.lower()
@@ -50,3 +55,26 @@ def is_permutation_of_a_palindrome2(string):
     return bit_vector == 0 or (bit_vector & (bit_vector - 1)) == 0
 
 print(is_permutation_of_a_palindrome2("Taco Coa"))
+
+def is_palindrom_permutation3(string):
+    bit_vector = create_bit_vector(string)
+    return bit_vector == 0 or (((bit_vector - 1) & bit_vector) == 0)
+
+
+def create_bit_vector(string):
+    ord_a = ord("a")
+    ord_z = ord("z")
+    bit_vector = 0
+    for char in string:
+         if ord_a <= ord(char) <= ord_z:
+             index = ord(char) - ord_a
+             mask = 1 << index
+             if bit_vector & mask == 0:
+                 bit_vector |= mask
+             else:
+                 bit_vector &= ~mask
+
+    return bit_vector
+
+
+print(is_palindrom_permutation3("abcb"))

@@ -5,7 +5,7 @@ Given two integer arrays to represent weights and profits of ‘N’ items, we n
 Each item can only be selected once, which means either we put an item in the knapsack or we skip it.
 
 Example:
--------
+--------
 Items: { Apple, Orange, Banana, Melon }
 Weights: { 2, 3, 1, 4 }
 Profits: { 4, 5, 3, 7 }
@@ -20,32 +20,22 @@ Banana + Melon (total weight 5) => 10 profit
 This shows that Banana + Melon is the best combination as it gives us the maximum profit, and the total weight does not exceed the capacity.
 
 Complexity:
-----------
-Time: O(N * C)
-Space: O(N * C)
-
+---------
+Time: O(2^N)
+Space: O(2^N)
 """
 
-def solve_knapsack(profits, weights, capacity):
-    cache = [[-1 for x in range(capacity + 1)] for y in range(len(profits))]
-    return solve_knapsack_recursive(profits, weights, capacity, 0, cache)
-
-
-def solve_knapsack_recursive(profits, weights, capacity, current_index, cache):
-    if capacity <= 0 or current_index >= len(profits):
+def solve_knapsack(profits, weight, capacity, current_index):
+    if capacity == 0 or current_index < 0:
         return 0
-    if cache[current_index][capacity] != -1:
-        return cache[current_index][capacity]
 
-    profit1 = 0
-    if weights[current_index] <= capacity:
-        profit1 = profits[current_index] + solve_knapsack_recursive(profits, weights, capacity - weights[current_index],
-                                                                    current_index + 1, cache)
+    profit_excluding_item = solve_knapsack(profits, weight, capacity, current_index - 1)
+    profit_including_item = 0
+    if weight[current_index] <= capacity:
+        profit_including_item = profits[current_index] + solve_knapsack(profits, weight, capacity - weight[current_index], current_index - 1)
 
-    profit2 = solve_knapsack_recursive(profits, weights, capacity, current_index + 1, cache)
-    cache[current_index][capacity] = max(profit1, profit2)
 
-    return cache[current_index][capacity]
+    return max(profit_excluding_item, profit_including_item)
 
 
 def main():

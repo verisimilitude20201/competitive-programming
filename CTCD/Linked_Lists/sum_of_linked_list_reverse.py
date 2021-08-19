@@ -60,5 +60,5 @@ if __name__ == '__main__':
     l2.append(2)
     result = SingleLinkedList()
 
-    result1 = sum_of_linked_list(l1.head, l2.head)
+    result1 = sum_of_linked_list_reverse(l1.head, l2.head)
     result1.print_list()

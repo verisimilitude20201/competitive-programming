@@ -279,34 +279,25 @@ Space: O(N * C)
 
 """
 
-def solve_knapsack(profits, weight, capacity):
-    n = len(profits)
-    if capacity <= 0 or n == 0 or len(weight) != n:
-        return 0
+def solve_knapsack_bottom_up(profits, weights, capacity):
+    dp = [[0 for j in range(capacity + 1)] for i in range(len(profits))]
 
-    dp = [[0 for x in range(capacity + 1)] for y in range(n)]
+    for i in range(1, len(profits)):
+        for j in range(1, capacity + 1):
+            profit_including_item = 0
+            if weights[i] <= j:
+                profit_including_item = profits[i] + dp[i - 1][j - weights[i]]
+            profits_excluding_item = dp[i - 1][j]
 
-    # if we have only one weight, we will take it if it is not more than the capacity
-    for c in range(0, capacity + 1):
-        if weight[0] <= c:
-            dp[0][c] = profits[0]
+            dp[i][j] = max(profit_including_item, profits_excluding_item)
 
-    for i in range(1, n):
-        for c in range(1, capacity + 1):
-            profit1, profit2 = 0, 0
-
-            if weight[i] <= c:
-                profit1 = profits[i] + dp[i - 1][c - weight[i]]
-            profit2 = dp[i - 1][c]
-            dp[i][c] = max(profit1, profit2)
-
-    return dp[n - 1][capacity]
+    return dp[len(profits) - 1][capacity]
 
 
 def main():
-    print(solve_knapsack([1, 6, 10, 16], [1, 2, 3, 5], 5))
-    print(solve_knapsack([1, 6, 10, 16], [1, 2, 3, 5], 6))
-    print(solve_knapsack([1, 6, 10, 16], [1, 2, 3, 5], 7))
+    print(solve_knapsack_bottom_up([1, 6, 10, 16], [1, 2, 3, 5], 5))
+    print(solve_knapsack_bottom_up([1, 6, 10, 16], [1, 2, 3, 5], 6))
+    print(solve_knapsack_bottom_up([1, 6, 10, 16], [1, 2, 3, 5], 7))
 
 
 main()

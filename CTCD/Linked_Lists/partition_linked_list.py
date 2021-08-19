@@ -84,7 +84,6 @@ Complexity:
 ----------
 Time: O(N)
 Space: O(1)
-
 """
 
 from base import SingleLinkedList

@@ -43,7 +43,7 @@ num1 XOR num2 = 0010 (i.e. 1 XOR 3 = 2)
 
    right_most_bit_set = 0010
 
-3) Partition elements according to when the bit 3 is set or not
+3) Partition elements according to when the bit 1 is set or not
    num1 = 0000
    num2 = 0000
 

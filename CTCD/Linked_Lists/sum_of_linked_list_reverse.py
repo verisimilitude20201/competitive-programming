@@ -23,7 +23,7 @@ Space: O(1)
 """
 
 
-from base import SingleLinkedList
+from base.base_linked_list import SingleLinkedList
 
 
 def sum_of_linked_list_reverse(node1, node2):

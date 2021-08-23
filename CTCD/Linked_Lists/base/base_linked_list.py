@@ -32,6 +32,9 @@ class SingleLinkedList:
         :return:
         """
         new_node = self.Node(data)
+        self.append_node(new_node)
+
+    def append_node(self, new_node):
         if self.tail is None:
             self.tail = new_node
             self.head = self.tail
@@ -39,6 +42,7 @@ class SingleLinkedList:
             self.tail.next = new_node
             self.tail = new_node
         self._increment_length()
+
 
     def print_list(self):
         """

@@ -25,7 +25,6 @@ Space: O(1)
 
 from base.base_linked_list import SingleLinkedList
 
-
 def sum_of_linked_list_reverse(node1, node2):
     result = SingleLinkedList()
     carry = 0
@@ -33,8 +32,7 @@ def sum_of_linked_list_reverse(node1, node2):
         x = 0 if node1 is None else node1.data
         y = 0 if node2 is None else node2.data
         total = carry + x + y
-        node = SingleLinkedList()
-        node.data = total % 10
+        node = SingleLinkedList.Node(total % 10)
         if result.head is None:
             result.head = node
         else:
@@ -53,12 +51,11 @@ if __name__ == '__main__':
     l1.append(7)
     l1.append(1)
     l1.append(6)
+    l1.append(3)
 
     l2 = SingleLinkedList()
     l2.append(5)
     l2.append(9)
     l2.append(2)
-    result = SingleLinkedList()
-
-    result1 = sum_of_linked_list_reverse(l1.head, l2.head)
-    result1.print_list()
+    result = sum_of_linked_list_reverse(l1.head, l2.head)
+    result.print_list()

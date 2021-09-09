@@ -29,6 +29,8 @@ def is_palindrome_recurse(head, length):
         return Result(head.next, True)
 
     res = is_palindrome_recurse(head.next, length - 2)
+    if not res.is_equal:
+        return res
     res.is_equal = (head.data == res.node.data)
     res.node = res.node.next
 

@@ -1,0 +1,24 @@
+def is_there_a_path(graph, start_node, end_node)
+    if start_node == end_node:
+        return True
+
+    for node in graph.get_nodes():
+        node.set_visited = false
+
+    queue = deque()
+    start.set_visited = true
+    queue.add(start)
+
+    while queue:
+        node = queue.dequeue()
+        if node:
+            for adjacent_node in node.get_adjacent_nodes():
+                if not adjacent_node.visited:
+                    if adjacent_node == node:
+                        return True
+                    else:
+                        queue.enqueue(adjacent_node)
+
+        node.visited = true
+
+    return False

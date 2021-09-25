@@ -1,24 +1,32 @@
-def is_there_a_path(graph, start_node, end_node)
-    if start_node == end_node:
-        return True
+class NodeState(Enum):
+    UNVISITED = "unvisited"
+    VISITING = "visiting"
+    VISITED = "visited"
 
-    for node in graph.get_nodes():
-        node.set_visited = false
+import deque 
 
+def check_if_path_is_there(G, start_node, end_node):
+    if G is none or start_node is None or end_node is None:
+        return None
+
+    for node in G.get_nodes()
+        node.state = NodeState.UNVISITED
+
+    start_node.state = NodeState.VISITING
     queue = deque()
-    start.set_visited = true
-    queue.add(start)
+    queue.append_left(start_node)
 
     while queue:
-        node = queue.dequeue()
+        node = queue.pop()
         if node:
-            for adjacent_node in node.get_adjacent_nodes():
-                if not adjacent_node.visited:
-                    if adjacent_node == node:
+            for adjacent_node in node.get_adjacent_nodes:
+                if adjacent_node.state == NodeState.UNVISITED:
+                    if end_node == adjacent_node:
                         return True
                     else:
-                        queue.enqueue(adjacent_node)
+                        adjacent_node.state = NodeState.VISITING
+                        queue.append_left(adjacent_node)
 
-        node.visited = true
+            node.state = NodeState.VISITED
 
     return False

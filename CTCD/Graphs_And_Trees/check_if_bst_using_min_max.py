@@ -1,7 +1,7 @@
 """
 Explanation:
 -----------
-In-order traversal and maintain only the last traversed node's value
+In-order traversal and compute the min and max at each node to check if its a BST.
 
 Complexity:
 ---------

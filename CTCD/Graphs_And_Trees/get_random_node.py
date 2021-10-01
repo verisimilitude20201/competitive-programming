@@ -1,3 +1,9 @@
+"""
+Complexity:
+----------
+Time: O(d) Where d is depth of tree
+Space: O(log N)
+"""
 import random
 
 

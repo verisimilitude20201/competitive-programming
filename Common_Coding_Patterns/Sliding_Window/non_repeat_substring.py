@@ -16,31 +16,65 @@ Sliding Window containing longest substring with distinct characters.
 
 Complexity
 ---------
-    Time: O(N) N is the number of characters in string
-    Space: O(K) K is the number of distinct characters in string because they'll be stored in the hash table.
+non_repeat_substring_brute_force
+--------------------------------
+Time: O(N^3)
+Space: O(Min(M, N)) Where M is the length of the string and N is the length of Set.
+
+
+non_repeat_substring_two_pointers_hash_map:
+------------------------------------------
+    Time: O(2N) ~ O(N) N is the number of characters in string
+    Space: O(Min(M, N)) Where M is the length of the string and N is the length of Set.
+
+
+non_repeat_substring_two_pointer_optimized
+---------------------
+Time: O(N)
+Space: O(Min(M, N)) Where M is the length of the string and N is the length of Set.
+
 """
 
-def non_repeat_substring1(str1):
-    char_freq = {}
-    window_start = 0
-    max_length = -1
-    for window_end in range(len(str1)):
-        right_char = str1[window_end]
-        if right_char not in char_freq:
-            char_freq[right_char] = 0
-        char_freq[right_char] += 1
+def non_repeat_substring_brute_force(s: str) -> int:
+    n = len(s)
+    res = 0
+    for i in range(n):
+        for j in range(i, n):
+            if check_repetition(s, i, j):
+                res = max(res, j - i + 1)
 
-        while char_freq[right_char] > 1:
-            left_char = str1[window_start]
-            if left_char in char_freq:
-                char_freq[left_char] -= 1
-                if char_freq[left_char] == 0:
-                    del char_freq[left_char]
-            window_start += 1
+    return res
 
-        max_length = max(max_length, window_end - window_start + 1)
 
-    return max_length
+def check_repetition(s: str, start: int, end: int) -> bool:
+    chars = [0] * 26
+    for i in range(start, end + 1):
+        ord_c = ord(s[i])
+        chars[ord_c] += 1
+        if chars[ord_c] > 1:
+            return False
+
+    return True
+
+
+def non_repeat_substring_two_pointers_hash_map(s: str) -> int:
+    chars = [0] * 128
+    left = right = 0
+    res = 0
+    while right < len(s):
+        r = s[right]
+        ord_c = ord(r)
+        chars[ord_c] += 1
+
+        while chars[ord_c] > 1:
+            l = s[left]
+            chars[ord_c] -= 1
+            left += 1
+
+        res = max(res, right - left + 1)
+        right += 1
+
+    return res
 
 
 def non_repeat_substring2(str1):

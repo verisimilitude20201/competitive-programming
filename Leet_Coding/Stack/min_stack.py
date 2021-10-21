@@ -3,6 +3,7 @@ Explanation:
 -----------
 To have O(1) access to the minimum element, always keep it at the top of the stack.
 
+
 Complexity:
 ----------
 Time: O(1)

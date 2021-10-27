@@ -1,4 +1,10 @@
 """
+Explanation:
+-----------
+popMax is the only different method here.
+
+Complexity:
+----------
 Time: O(N)
 Space: O(N)
 """

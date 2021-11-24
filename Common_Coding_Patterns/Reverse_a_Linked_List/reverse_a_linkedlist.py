@@ -12,8 +12,13 @@ None <- 2 <- 4 <- 6  <- 8 <- 10
 
 Complexity
 ---------
-Time: O(N)
-Space: O(1)
+reverse1:
+    Time: O(N)
+    Space: O(1)
+
+reverse2:
+    Time: O(N)
+    Space: O(N)
 
 """
 
@@ -33,7 +38,7 @@ class Node:
         print()
 
 
-def reverse(head):
+def reverse1(head):
     prev_ptr = None
     current = head
     while current is not None:
@@ -44,6 +49,14 @@ def reverse(head):
 
     return prev_ptr
 
+def reverse2(head):
+    if head is None or head.next is None:
+        return head
+    p = reverse(head.next)
+    head.next.next = head
+    head.next = None
+
+    return p
 
 def main():
     head = Node(2)

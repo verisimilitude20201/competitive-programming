@@ -7,7 +7,9 @@ isAnagram1
 
 isAnagram2
     Time: O(N)
-    Space: O(1)
+    Space: O(1) (26 ASCII alphabets)
+
+
 
 Follow-Up:
 --------

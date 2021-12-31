@@ -18,6 +18,11 @@ Complexity:
     ------------------
     Time: O(N)
     Space: O(N)
+
+    preorderTraversal3:
+    ------------------
+    Time: O(N)
+    Space: O(1)
 """
 class Solution:
     def __init__(self):
@@ -33,25 +38,47 @@ class Solution:
             self.preorderTraversal(root.left)
             self.preorderTraversal(root.right)
     
-    def preorderTraversal2(self, root: Optional[TreeNode]) -> List[int]:
-        return self.bfs(root)
-
-    def bfs(self, root: Optional[TreeNode]):
-        stack = []
+    def preorderTraversal_iterative(self, root):
+        output = []
         if root is None:
-            return self.pre_order
-        
-        stack.append(root)
+            return []
+        stack = [root]
         while stack:
-            node = stack.pop()
-            self.pre_order.append(node.val)
-            if node.right:
-                stack.append(node.right)
+            root = stack.pop()
+            if root:
+                output.append(root.val)
+                if root.right:
+                    stack.append(root.right)
+                if root.left:
+                    stack.append(root.left)
+       
+        return output
+    
+    def preorderTraversal3(self, root):
+        """
+        :type root: TreeNode
+        :rtype: List[int]
+        """
+        preorder = []
+        current = root
+        while current:
+            if current.left is None:
+                preorder.append(current.val)
+                current = current.right
+            else:
+                prev = current.left
+                while prev.right and prev.right != current:
+                    prev = prev.right
+                
+                if prev.right is None:
+                    preorder.append(current.val)
+                    prev.right = current
+                    current = current.left
+                else:
+                    prev.right = None
+                    current = current.right
         
-            if node.left:
-                stack.append(node.left)
-            
-        return self.pre_order
+        return preorder
     
         
         

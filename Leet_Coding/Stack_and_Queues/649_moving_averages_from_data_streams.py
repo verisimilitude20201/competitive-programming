@@ -1,3 +1,14 @@
+"""
+Explanation:
+-----------
+Use a queue of size 3. 
+
+Complexity:
+----------
+Time: O(1)
+Space: O(1)
+"""
+
 from collections import deque
 
 

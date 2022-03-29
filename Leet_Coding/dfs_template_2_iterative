@@ -1,0 +1,14 @@
+def dfs(current: Node, target: Node) -> boolean:
+    stack = []
+    stack.append(current)
+    visited = set()
+    while len(stack):
+        n = stack.pop()
+        if n == target:
+            return True
+        for neighbor in n:
+            if neighbor not in visited:
+                stack.append(neighbor)
+                visited.add(neighbor)
+    
+    return False

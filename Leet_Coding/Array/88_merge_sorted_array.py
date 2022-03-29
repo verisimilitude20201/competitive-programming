@@ -4,7 +4,7 @@ Complexity:
 
 merge1
 ------
-Time: O(log(N + M) * N )
+Time: O(log(N + M) * (M + N))
 Space: O(1)
 
 """

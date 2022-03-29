@@ -1,0 +1,12 @@
+def bfs(current: Node, target: Node) -> boolean:
+      Q = deque([])
+      Q.add(current)
+      while len(Q):
+          for i in range(len(Q)):
+              node = Q.popleft()
+              if node == target:
+                  return True
+              for neighbor in node.neighbors:
+                  Q.add(neighbor)
+      
+      return False

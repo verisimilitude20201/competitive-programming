@@ -7,6 +7,9 @@ Solution1
 
 Time: O(l1 * l2 * x)
 Space: O(l1 * l2 * x)
+
+Solution2
+
 """
 class Solution1:
     def findRestaurant(self, list1: List[str], list2: List[str]) -> List[str]:

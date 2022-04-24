@@ -1,3 +1,10 @@
+"""
+Complexity:
+----------
+Time: O(N^2): Because we use a tuple and a Python tuple does'nt cache it's hashes. It recomputes
+them every time for every item. Use a frozen set to get a linear time complexity.
+Space: O(N)
+"""
 class Solution:
     def __init__(self) -> None:
         self.subtree_map = defaultdict(list)

@@ -3,7 +3,7 @@ Explanation:
 -----------
 Time: O(N)
 Space: O(d * S * t) Where d is the number of words in dictionary with a given abbreviation
-and S is the average length of word, t is the number of words with the same abbreviation
+and S is the average length of word, t is the number of words with the same abbreviation~
 """
 from typing import List
 

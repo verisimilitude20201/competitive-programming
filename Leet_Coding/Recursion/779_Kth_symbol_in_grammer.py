@@ -29,5 +29,5 @@ class Solution:
         isOdd = (k % 2 == 1)
         if parent == 1:
             return 1 if isOdd else 0
-        else:
+        else:~
             return 0 if isOdd else 1

@@ -1,4 +1,37 @@
 """
+Explanation
+----------
+Case 1: No 9 in any place
+------
+0 ->   1 -> 3 -> 1
+S                   NN
+                 H
+
+
+Case 2: 9 not in units place
+0 ->   1 -> 9 -> 3
+S                     H                  
+                 NN       
+                 
+
+Case 3: 9  in units place
+0 ->   1 -> 9 -> 9
+S                     
+NN     H
+
+Case 4: all 9s
+1 ->   9 -> 0 -> 0
+S                     
+NN                  H
+                      
+Case 5: Empty list
+
+0       -> None
+NN          H
+S
+
+
+
 Complexity:
 ----------
 Time: O(N)

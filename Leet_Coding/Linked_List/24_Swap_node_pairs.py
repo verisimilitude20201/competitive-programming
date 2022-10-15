@@ -5,6 +5,12 @@ Solution 1
 ---------
 Time: O(N)
 Space: O(N)
+
+Solution 2
+----------
+Time: O(N)
+Space: O(1)
+
 """
 
 
@@ -23,4 +29,21 @@ class Solution1:
         second.next = first
         
         return second
+
+class Solution2:
+    def swapPairs(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        if head is None or head.next is None:
+            return head
+        prev = None
+        dummy = head.next
+        while head and head.next:
+            if prev:
+                prev.next = head.next
+            prev = head
+            next_node = head.next.next
+            head.next.next = head
+            head.next = next_node
+            head = next_node
+        
+        return dummy
         

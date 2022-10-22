@@ -1,3 +1,10 @@
+"""
+Complexity:
+---------
+Time: O(N)
+Space: O(1)
+
+"""
 class Solution:
     def pairSum(self, head: Optional[ListNode]) -> int:
         if head.next.next is None:

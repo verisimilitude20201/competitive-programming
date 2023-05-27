@@ -21,6 +21,11 @@ Solution 2:
 Time: O(N)
 Space: O(1)
 
+Solution 3:
+-----------
+Time: O(log(NM) * N)
+Space: O(1)
+
 """
 class Solution1:
     def minStartValue1(self, nums: List[int]) -> int:
@@ -48,3 +53,27 @@ class Solution2:
             start_value = min(start_value, total)
         
         return -start_value + 1
+    
+
+
+class Solution3:
+    def minStartValue(self, nums: List[int]) -> int:
+        left = 1
+        right = abs(min(nums)) * len(nums) + 1
+        while left < right:
+            middle = (left + right) // 2
+            is_valid = True
+            total = middle
+            for num in nums:
+                total += num
+                if total < 1:
+                    is_valid = False
+                    break
+            
+            if is_valid:
+                right = middle
+            else:
+                left = middle + 1
+        
+        return left
+                

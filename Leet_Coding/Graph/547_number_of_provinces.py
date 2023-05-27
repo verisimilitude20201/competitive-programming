@@ -3,6 +3,11 @@ Complexity:
 ----------
 Time: O(N^2 * alpha(N))
 Space: O(N)
+
+Solution2
+
+Time: O(N^2)
+Space: O(N)
 """
 class QuickUnion:
     def __init__(self, size):
@@ -44,3 +49,33 @@ class Solution:
         for i, value in enumerate(disjoint_set):
             count += (i == value)
         return count
+
+class Solution2:
+    def __init__(self):
+        self._seen = set()
+        self._graph = defaultdict(list)
+        
+    def findCircleNum(self, isConnected: List[List[int]]) -> int:
+        graph = self.construct_graph(isConnected)
+        province_count = 0
+        for i in range(len(isConnected)):
+            if i not in self._seen:
+                self._seen.add(i)
+                self.dfs(i)
+                province_count += 1
+        
+        return province_count
+            
+    
+    def construct_graph(self, isConnected: List[List[int]]):
+        for i in range(len(isConnected)):
+            for j in range(len(isConnected[i])):
+                if isConnected[i][j]:
+                    self._graph[i].append(j)
+                    self._graph[j].append(i)
+    
+    def dfs(self, node: int):
+        for neighbor in graph[node]:
+            if neighbor not in self._seen:
+                self._seen.add(neighbor)
+                self.dfs(neighbor)

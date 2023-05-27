@@ -1,3 +1,9 @@
+"""
+Complexity:
+----------
+Time: O(N * 2^d)
+Space: O(2^d)
+"""
 class Solution:
     def largestValues(self, root: Optional[TreeNode]) -> List[int]:
         if not root:

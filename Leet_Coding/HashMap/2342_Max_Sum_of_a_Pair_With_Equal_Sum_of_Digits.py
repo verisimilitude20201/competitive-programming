@@ -1,7 +1,7 @@
 """
 Complexity:
 ----------
-Time: O(N log N)
+Time: O(N log10d) Where d is the number of digits
 Space: O(N)
 """
 class Solution:

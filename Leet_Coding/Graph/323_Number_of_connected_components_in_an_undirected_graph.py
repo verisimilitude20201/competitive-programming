@@ -1,10 +1,18 @@
 """
 Complexity:
 ----------
+
+Solution 1
+-----------
 Time: O(E * alpha(N))
 Space: O(V)
 
 Where E is the number of edges, V the number of vertices, alpha(N) inverse Ackermann function.
+
+Solution 2: DFS
+----------
+Time: O(N)
+Space: O(N)
 """
 class QuickUnion:
     def __init__(self, n):
@@ -36,10 +44,38 @@ class QuickUnion:
         return self._connected_components
 
 
-class Solution:
+class Solution1:
     def countComponents(self, n: int, edges: List[List[int]]) -> int:
         quick_union = QuickUnion(n)
         for x, y in edges:
             quick_union.union(x, y)
 
         return quick_union.get_count()
+
+class Solution2:
+    def __init__(self):
+        self.graph = defaultdict(list)
+        self.visited = set()
+
+
+    def countComponents(self, n: int, edges: List[List[int]]) -> int:
+        self.create_graph(edges)
+        count_components = 0
+        for i in range(n):
+            if i not in self.visited:
+                self.visited.add(i)
+                self.dfs(i)
+                count_components += 1
+
+        return count_components
+
+    def create_graph(self, edges: List[List[int]]):
+        for x, y in edges:
+            self.graph[x].append(y)
+            self.graph[y].append(x)
+
+    def dfs(self, node):
+        for neighbor in self.graph[node]:
+            if neighbor not in self.visited:
+                self.visited.add(neighbor)
+                self.dfs(neighbor)

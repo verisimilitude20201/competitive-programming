@@ -1,8 +1,0 @@
-def dfs(current: Node, target: Node, visited: set[Node]) -> boolean:
-    if current == target:
-        return True
-    for neighbor in current:
-        if neighbor not in visited:
-            dfs(neighbor)
-            visited.add(neighbor)
-    return false

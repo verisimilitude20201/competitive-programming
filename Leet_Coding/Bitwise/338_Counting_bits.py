@@ -1,3 +1,7 @@
+"""
+Time: O(N log N) numner of bits in x = log2(x) + 1
+Space: O(1)
+"""
 class Solution:
     def countBits(self, n: int) -> List[int]:
         counts = [0]

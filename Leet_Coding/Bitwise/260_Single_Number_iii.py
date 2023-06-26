@@ -1,3 +1,9 @@
+"""
+Complexity:
+----------
+Time: O(N)
+Space: O(1)
+"""
 class Solution:
     def singleNumber(self, nums: List[int]) -> List[int]:
         bit_mask = 0
